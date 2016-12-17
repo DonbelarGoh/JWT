@@ -10,7 +10,7 @@ import {LoginPage} from "../pages/login/login";
 import {BlistPage} from '../pages/blist/blist';
 import {OptionsPage} from '../pages/options/options';
 import {AppTemp} from "../providers/app-temp";
-
+import {BankInfo} from '../providers/bank-info';
 
 @NgModule({
   declarations: [
@@ -34,6 +34,6 @@ import {AppTemp} from "../providers/app-temp";
     BlistPage,
     OptionsPage,
   ],
-  providers: [ AppTemp, {provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [ AppTemp, BankInfo, {provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
 export class AppModule {}

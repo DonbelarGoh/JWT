@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import {AppTemp} from '../../providers/app-temp';
+
+import {BankInfo} from '../../providers/bank-info';
 
 /*
   Generated class for the Options page.
@@ -11,15 +13,17 @@ import {AppTemp} from '../../providers/app-temp';
 @Component({
   selector: 'page-options',
   templateUrl: 'options.html',
-  providers: [AppTemp]
+  providers: [BankInfo]
 })
 export class OptionsPage {
-
-  selectedItem: string;
-
-  constructor(public navCtrl: NavController, public appTemp: AppTemp) {
-    this.selectedItem = appTemp.getSelectedItem().getBlistName();
-    console.log(this.selectedItem);
+  appTemp: AppTemp;
+  selectedBank: BankInfo;
+  selectedBankName: string;
+  constructor(public navCtrl: NavController, public navPrams: NavParams) {
+    this.selectedBank = navPrams.get('selectedBank');
+    this.selectedBankName = this.selectedBank.getBankName();
+    this.appTemp.setSelectedBank(this.selectedBank);  //----  Save selected Bank Info.
+    console.log(this.selectedBank.getBankName());
   }
 
   ionViewDidLoad() {

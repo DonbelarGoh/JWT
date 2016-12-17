@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import {SelectOption} from 'select-option';
+import {BankInfo} from 'bank-info';
 /*
   Generated class for the AppTemp provider.
 
@@ -13,22 +13,20 @@ import {SelectOption} from 'select-option';
 export class AppTemp {
 
 
-  private _selectedItem: SelectOption;
-
-
+  private _selectedBank: BankInfo;
 
   constructor(public http: Http) {
     console.log('Hello AppTemp Provider');
     //this._selectedItem = '';
   }
 
-  setSelectedItem(item: SelectOption) {
-    console.log('setSelectedItem Name'+ item.getBlistName());
-    this._selectedItem = item;
+  setSelectedBank(item: BankInfo) {
+    console.log('setSelectedItem Name'+ item.getBankName());
+    this._selectedBank = item;
   }
-  getSelectedItem(): SelectOption {
-    console.log('getSelectedItem ' + this._selectedItem.getBlistName());
-    return this._selectedItem;
+  getSelectedBank(): BankInfo {
+    console.log('getSelectedItem ' + this._selectedBank.getBankName());
+    return this._selectedBank;
   }
 
 }

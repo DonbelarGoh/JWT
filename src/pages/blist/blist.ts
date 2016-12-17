@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import {OptionsPage} from '../options/options';
-import {AppTemp} from '../../providers/app-temp';
-import {SelectOption} from '../../providers/select-option';
+import {BankInfo} from '../../providers/bank-info';
 
 
 /*
@@ -15,57 +14,54 @@ import {SelectOption} from '../../providers/select-option';
 @Component({
   selector: 'page-blist',
   templateUrl: 'blist.html',
-  providers: [AppTemp]
+  providers: [BankInfo]
 })
 
 export class BlistPage {
 
   private listItems: string[];
 
-  private item1 = new SelectOption('Bank of Baroda', '*99*48#');
-  private item2 = new SelectOption('Bank India', '*99*47#');
-  private item3 = new SelectOption('Canara Bank', '*99*46#');
-  private item4 = new SelectOption('Central Bank of India', '*99*51#');
-  private item5 = new SelectOption('HDFC Bank Ltd', '*99*43#');
-  private item6 = new SelectOption('ICICI Bank', '*99*44#');
-  private item7 = new SelectOption('Punjab National Bank', '*99*42#');
-  private item8 = new SelectOption('State Bank of India', '*99*41#');
-  private item9 = new SelectOption('Syndicate Bank', '*99*55#');
+  private item1 = new BankInfo('Bank of Baroda', '*99*48#');
+  private item2 = new BankInfo('Bank India', '*99*47#');
+  private item3 = new BankInfo('Canara Bank', '*99*46#');
+  private item4 = new BankInfo('Central Bank of India', '*99*51#');
+  private item5 = new BankInfo('HDFC Bank Ltd', '*99*43#');
+  private item6 = new BankInfo('ICICI Bank', '*99*44#');
+  private item7 = new BankInfo('Punjab National Bank', '*99*42#');
+  private item8 = new BankInfo('State Bank of India', '*99*41#');
+  private item9 = new BankInfo('Syndicate Bank', '*99*55#');
 
 
-  constructor(public navCtrl: NavController, public appTemp: AppTemp) {
+  constructor(public navCtrl: NavController) {
 
     this.listItems = [
-      this.item1.getBlistName(),
-      this.item2.getBlistName(),
-      this.item3.getBlistName(),
-      this.item4.getBlistName(),
-      this.item5.getBlistName(),
-      this.item6.getBlistName(),
-      this.item7.getBlistName(),
-      this.item8.getBlistName(),
-      this.item9.getBlistName(),
-
+      this.item1.getBankName(),
+      this.item2.getBankName(),
+      this.item3.getBankName(),
+      this.item4.getBankName(),
+      this.item5.getBankName(),
+      this.item6.getBankName(),
+      this.item7.getBankName(),
+      this.item8.getBankName(),
+      this.item9.getBankName(),
     ];
   }
 
-  gotoOption(item: any) {
-    console.log('1111selected item is '+ item);
-    this.appTemp.setSelectedItem(this.compareItem(item));
-    this.navCtrl.push(OptionsPage);
+  gotoOption(item: string) {
+    this.navCtrl.push(OptionsPage, {selectedBank : this.compareItem(item)});
   }
 
-  compareItem(item: string): SelectOption{
+  compareItem(item: string): BankInfo{
     switch (item){
-      case this.item1.getBlistName(): return this.item1;
-      case this.item2.getBlistName(): return this.item2;
-      case this.item3.getBlistName(): return this.item3;
-      case this.item4.getBlistName(): return this.item4;
-      case this.item5.getBlistName(): return this.item5;
-      case this.item6.getBlistName(): return this.item6;
-      case this.item7.getBlistName(): return this.item7;
-      case this.item8.getBlistName(): return this.item8;
-      case this.item9.getBlistName(): return this.item9;
+      case this.item1.getBankName(): return this.item1;
+      case this.item2.getBankName(): return this.item2;
+      case this.item3.getBankName(): return this.item3;
+      case this.item4.getBankName(): return this.item4;
+      case this.item5.getBankName(): return this.item5;
+      case this.item6.getBankName(): return this.item6;
+      case this.item7.getBankName(): return this.item7;
+      case this.item8.getBankName(): return this.item8;
+      case this.item9.getBankName(): return this.item9;
     }
   }
 }

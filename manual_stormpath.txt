@@ -1,0 +1,33 @@
+*********************************************************
+*
+*     Hybrid app and Stormpath connecting Manual
+*     Producer:  Paul Dorney
+*     2016. 12. 12 release
+*
+*********************************************************
+
+Fitst you have to create your account at stormpath.com.
+In order to use the Stormpath API, you will need to create an API key.
+
+On the right side of the Admin Console, under "Developer Tools", click the "Create API Key" button.
+A dialog box will come up, with additional information about the key.
+You will now be able to download your key in the form of a apiKey-{API_KEY_ID}.properties file.
+This file contains your Stormpath API Key information, which can be used to authenticate with the Stormpath API.
+
+You can find both variables (apiKey.id and apiKey.secret) in downloaded file.
+Replace this variable with the variable of same name in application_root/src/providers/stormpath.ts.
+
+Open the application menu and select the My application item at stormpath.com.
+You can see the ID here.
+Copy ID and replace this ID with application_ID variable in root/src/providers/stormpath.ts.
+
+That's done.
+
+***************************************************************************************
+*
+*        chrome.exe --user-data-dir="C:/Chrome dev session" --disable-web-security
+*
+***************************************************************************************
+
+You must disable web security property of Chrome browser.
+After then you can run the app using localhost:8100 in the browser.
